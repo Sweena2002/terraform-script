@@ -10,7 +10,7 @@ resource "aws_vpc" "main_vpc" {
 resource "aws_subnet" "pvt_subnet"{
     vpc_id = aws_vpc.main_vpc.id
     cidr_block = "10.0.0.0/25"
-    availability_zone = "eu-west-2"
+    
 }
 
 # Create EC2 within the subnet
