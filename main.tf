@@ -15,7 +15,7 @@ resource "aws_subnet" "pvt_subnet"{
 
 # Create EC2 within the subnet
 resource "aws_instance" "example" {
-  ami           = "ami-079db87dc4c10ac91"
+  ami           = "ami-093cb9fb2d34920ad"
   instance_type = "t2.micro"
   subnet_id = aws_subnet.pvt_subnet.id
   tags = {
