@@ -24,7 +24,6 @@ resource "aws_instance" "example" {
 }
 
 resource "aws_s3_bucket" "s3" {
-  bucket = "mybucket_s3" 
-  acl    = "private"                  
+  bucket = "mytf_statebucket"                  
 
 }
