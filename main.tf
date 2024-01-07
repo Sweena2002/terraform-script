@@ -22,3 +22,9 @@ resource "aws_instance" "example" {
     Name = "ExampleInstance"
   }
 }
+
+resource "aws_s3_bucket" "s3" {
+  bucket = "aws_s3_mybucket_s3.id" 
+  acl    = "private"                  
+
+}
