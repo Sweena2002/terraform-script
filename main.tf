@@ -27,9 +27,6 @@ terraform {
   backend "s3" {
     bucket = "test-tftstate"
     key    = "s3/state/terraform.tfstate"
-    skip_credentials_validation = true
-    skip_metadata_api_check     = true
-    force_path_style            = true
     region = "eu-west-2"
   }
 }
