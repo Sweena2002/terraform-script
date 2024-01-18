@@ -8,5 +8,7 @@ module "eks" {
 
 module "eks_eks-managed-node-group" {
   source  = "terraform-aws-modules/eks/aws//modules/eks-managed-node-group"
+  cluster_name    = "my-first-eks-cluster"
+  subnets         = ["aws_subnet.pvt_subnet.id"]
   version = "19.21.0"
 }
