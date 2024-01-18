@@ -4,7 +4,7 @@ module "eks" {
   subnets_ids         = ["aws_subnet.pvt_subnet.id"]
   vpc_id          = "aws_vpc.main_vpc.id"
   cluster_version = "1.21"
-
+}
 
 
 module "eks_node_group" {
