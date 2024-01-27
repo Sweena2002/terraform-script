@@ -33,7 +33,7 @@ resource "aws_eks_cluster" "aws_eks" {
   
 
   vpc_config {
-    subnet_ids = ["subnet-4d0d3324", "subnet-b3a8f9c8"]
+    subnet_ids = [aws_subnet.pvt_subnet.id]
   }
 
   tags = {
@@ -79,7 +79,7 @@ resource "aws_eks_node_group" "node" {
   cluster_name    = aws_eks_cluster.aws_eks.name
   node_group_name = "node_tuto"
   node_role_arn   = aws_iam_role.eks_nodes.arn
-  subnet_ids      = ["<subnet-1>","<subnet-2>"]
+  subnet_ids      = aws_subnet.pvt_subnet.id
 
   scaling_config {
     desired_size = 1
