@@ -30,7 +30,7 @@ resource "aws_iam_role_policy_attachment" "AmazonEKSServicePolicy" {
 resource "aws_eks_cluster" "aws_eks" {
   name     = "eks_cluster_tuto"
   role_arn = aws_iam_role.eks_cluster.arn
-  vpc_id          = "aws_vpc.main_vpc.id"
+  
 
   vpc_config {
     subnet_ids = ["aws_subnet.pvt_subnet.id"]
