@@ -36,7 +36,13 @@ resource "aws_vpc" "main_vpc" {
 }
 
 # Create subnet within VPC
-resource "aws_subnet" "pvt_subnet"{
+resource "aws_subnet" "pvt_subnet_one"{
+    vpc_id = aws_vpc.main_vpc.id
+    cidr_block = "10.0.0.0/25"
+    
+}
+
+resource "aws_subnet" "pvt_subnet_two"{
     vpc_id = aws_vpc.main_vpc.id
     cidr_block = "10.0.0.0/25"
     
@@ -48,7 +54,7 @@ resource "aws_eks_cluster" "aws_eks" {
   
 
   vpc_config {
-    subnet_ids = [aws_subnet.pvt_subnet.id]
+    subnet_ids = [aws_subnet.pvt_subnet_one.id, aws_subnet.pvt_subnet_two.id]
   }
 
   tags = {
