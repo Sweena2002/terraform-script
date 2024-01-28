@@ -100,7 +100,7 @@ resource "aws_eks_node_group" "node" {
   cluster_name    = aws_eks_cluster.aws_eks.name
   node_group_name = "node_tuto"
   node_role_arn   = aws_iam_role.eks_nodes.arn
-  subnet_ids      = aws_subnet.pvt_subnet.id
+  subnet_ids      = [aws_subnet.pvt_subnet_one.id, aws_subnet.pvt_subnet_two.id]
 
   scaling_config {
     desired_size = 1
