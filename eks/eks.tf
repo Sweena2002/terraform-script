@@ -38,7 +38,7 @@ resource "aws_vpc" "main_vpc" {
 # Create subnet within VPC
 resource "aws_subnet" "pvt_subnet1"{
     vpc_id = aws_vpc.main_vpc.id
-    cidr_block = "10.0.0.0/26"
+    cidr_block = "10.0.0.63/26"
     
 }
 
