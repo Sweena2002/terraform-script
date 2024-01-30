@@ -42,6 +42,11 @@ resource "aws_subnet" "pvt_subnet1"{
     availability_zone = "eu-west-2a"
 }
 
+resource "aws_subnet" "pvt_subnet2" {
+  vpc_id            = aws_vpc.main_vpc.id
+  cidr_block        = "10.0.0.64/26"
+  availability_zone = "eu-west-2b"  # Specify a different AZ
+}
 
 resource "aws_eks_cluster" "aws_eks" {
   name     = "eks_cluster_tuto"
@@ -49,7 +54,7 @@ resource "aws_eks_cluster" "aws_eks" {
   
 
   vpc_config {
-    subnet_ids = [aws_subnet.pvt_subnet1.id]
+    subnet_ids = [aws_subnet.pvt_subnet1.id , aws_subnet.pvt_subnet2.id]
   }
 
   tags = {
@@ -95,7 +100,7 @@ resource "aws_eks_node_group" "node" {
   cluster_name    = aws_eks_cluster.aws_eks.name
   node_group_name = "node_tuto"
   node_role_arn   = aws_iam_role.eks_nodes.arn
-  subnet_ids      = [aws_subnet.pvt_subnet1.id]
+  subnet_ids      = [aws_subnet.pvt_subnet1.id, aws_subnet.pvt_subnet2.id]
 
   scaling_config {
     desired_size = 1
